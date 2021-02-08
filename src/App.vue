@@ -1,39 +1,28 @@
 <template>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta content="width=device-width,initial-scale=1,minimal-ui" name="viewport"/>
+    <div>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons"/>
-    </head>
-    <body>
-        <div id="app">
-        <img class="logo" src="./assets/logo.svg" />
-        <h2>{{ msg }}</h2>
-        <h3>{{ reply }}</h3>
-
-        <div>
-            <md-button @click="goToBookView()" class="md-primary">Go to Books page</md-button>
+        <app-header></app-header>
+        <div class="section-container">
+            <section class="content-container">
+                <transition mode="in-out">
+                    <router-view></router-view>
+                </transition>
+            </section>
         </div>
-        </div>
-        <router-view />
-    </body>
-</html>
+        <app-footer></app-footer>
+    </div>
 </template>
 
 <script>
+import AppHeader from '@/components/AppHeader';
+import AppFooter from './components/AppFooter.vue';
+
 export default {
     name: "App",
-    data() {
-    return {
-        msg: "Technical Challenge",
-        reply: "Challenge accepted".toUpperCase(),
-    };
-    },
-    methods: {
-        goToBookView() {
-            this.$router.push("books");
-        },
-    },
+    components: {
+        AppHeader,
+        AppFooter
+    }
 };
 </script>
 
@@ -44,12 +33,23 @@ body {
 }
 
 #app {
-    margin-top: 60px;
+    padding-top: 32px;
     text-align: center;
     color: #303840;
+    background-color: #faecec;
+    z-index: 100;
 }
 
 .logo {
     max-width: 500px;
+}
+
+.section-container {
+    margin: 16px;
+}
+.content-container {
+    margin: 0 auto;
+    padding: 16px;
+    text-align: center;
 }
 </style>
