@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // views
-const bookView = () => import('../components/BookView');
-const notfoundView = () => import('@/components/NotFound');
-const entryView = () => import('@/components/Entry');
+const bookView = () => import('../views/BookView');
+const notfoundView = () => import('@/views/NotFound');
+const entryView = () => import('@/views/Entry');
+const bookDetails = () => import('@/views/BookDetails');
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,7 @@ const routes = [
         name: 'books page',
         component: bookView
     },
+    { path: '/books/:bookId', name: 'bookDetails', component: bookDetails },
     {
         path: '*', component: notfoundView
     }

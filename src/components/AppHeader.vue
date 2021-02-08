@@ -17,12 +17,13 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../assets/scss/material';
     #app {
         padding-top: 32px;
         text-align: center;
-        color: #303840;
-        background-color: #faecec;
+        color: white;
+        background-color: $primary;
         position: fixed;
         z-index: 999;
         width: 100%;

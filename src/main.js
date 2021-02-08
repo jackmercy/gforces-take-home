@@ -1,21 +1,12 @@
-import 'vue-material/dist/vue-material.min.css'
-import 'vue-material/dist/theme/default.css'
-import Vue from 'vue'
-import App from './App.vue'
-import {
-    MdButton,
-    MdContent,
-    MdCard,
-    MdProgress
-} from 'vue-material/dist/components'
+// import 'vue-material/dist/vue-material.min.css'
+// import 'vue-material/dist/theme/default.css'
+import Vue from 'vue';
+import App from './App.vue';
+import Material from './plugins/material';
 import router from './router'
 import store from './vuex/index';
 
-Vue.use(MdButton);
-Vue.use(MdContent);
-Vue.use(MdCard);
-Vue.use(MdProgress);
-
+Vue.use(Material);
 Vue.config.productionTip = false;
 
 new Vue({

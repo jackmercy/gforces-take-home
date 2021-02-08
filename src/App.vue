@@ -4,7 +4,7 @@
         <app-header></app-header>
         <div class="section-container">
             <section class="content-container">
-                <transition mode="in-out">
+                <transition name="fade" mode="out-in">
                     <router-view></router-view>
                 </transition>
             </section>
@@ -29,7 +29,7 @@ export default {
 <style>
 body {
     margin: 0;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto";
 }
 
 .logo {
@@ -44,7 +44,18 @@ body {
 .content-container {
     margin: 0 auto;
     padding: 16px;
-    text-align: center;
     height: 100%;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition-duration: 0.5s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+    opacity: 0
 }
 </style>

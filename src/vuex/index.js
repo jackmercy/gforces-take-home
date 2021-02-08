@@ -1,16 +1,21 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import appService  from '../services/app.service';
+import bookdetailsModule from '@/vuex/bookdetails';
 
 Vue.use(Vuex);
 
 
 const state = {
     getBookListStatus: undefined,
-    books: []
+    books: [],
+
 }
 
 const store = new Vuex.Store({
+    modules: {
+        bookdetailsModule,
+    },
     state,
     getters: {
         isLoading: (state) => {
