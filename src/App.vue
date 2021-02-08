@@ -32,24 +32,19 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
-#app {
-    padding-top: 32px;
-    text-align: center;
-    color: #303840;
-    background-color: #faecec;
-    z-index: 100;
-}
-
 .logo {
     max-width: 500px;
 }
 
 .section-container {
-    margin: 16px;
+    min-height: calc(100vh - 82px);
+    padding: 145px 0 72px;
+    margin: 0 16px;
 }
 .content-container {
     margin: 0 auto;
     padding: 16px;
     text-align: center;
+    height: 100%;
 }
 </style>

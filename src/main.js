@@ -5,14 +5,16 @@ import App from './App.vue'
 import {
     MdButton,
     MdContent,
-    MdTabs
+    MdCard,
+    MdProgress
 } from 'vue-material/dist/components'
 import router from './router'
 import store from './vuex/index';
 
-Vue.use(MdButton)
-Vue.use(MdContent)
-Vue.use(MdTabs)
+Vue.use(MdButton);
+Vue.use(MdContent);
+Vue.use(MdCard);
+Vue.use(MdProgress);
 
 Vue.config.productionTip = false;
 

@@ -1,11 +1,43 @@
-<template lang="">
+<template>
     <div class="book-view">
         <h1 class="title">{{ title }}</h1>
-        <md-button @click="fetchBooks()" class="md-primary">Get books</md-button>
         <div class="book-container">
-            <div v-if="isLoading" class="loader"></div>
+            <div v-if="isLoading" class="loader">
+                <md-progress-spinner class="spinner" :md-diameter="100" :md-stroke="5" md-mode="indeterminate"></md-progress-spinner>
+            </div>
             <div v-if="isSuccess" class="content">
-                List of books
+                <div class="md-layout md-gutter md-alignment-left">
+                    <div v-for="book in books" :key="book.id" class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100">
+                        <md-card v-bind:id="book.id">
+                            <md-card-media>
+                                <img class="thumbnail" v-bind:src="book.volumeInfo.imageLinks.smallThumbnail" alt="People">
+                            </md-card-media>
+
+                            <md-card-header>
+                                <div class="md-title">{{ book.volumeInfo.title }}</div>
+                                <div class="md-subhead">{{ book.volumeInfo.authors[0] }}</div>
+                            </md-card-header>
+
+                            <md-card-expand>
+                                <md-card-actions md-alignment="space-between">
+                                <div>
+                                    <md-button>Details</md-button>
+                                </div>
+
+                                <md-card-expand-trigger>
+                                    <md-button>Learn more</md-button>
+                                </md-card-expand-trigger>
+                                </md-card-actions>
+
+                                <md-card-expand-content>
+                                <md-card-content>
+                                    <span v-html="book.searchInfo.textSnippet" ></span>
+                                </md-card-content>
+                                </md-card-expand-content>
+                            </md-card-expand>
+                        </md-card>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -16,12 +48,14 @@ export default {
     name: 'BookView',
     data() {
         return {
-            title: '40 Stephen King novels'
+            title: 'Stephen King novels'
         };
     },
     methods: {
         fetchBooks() {
-            this.$store.dispatch('startfetchBookList');
+            if (!!books || books?.length === 0) {
+                this.$store.dispatch('startfetchBookList');
+            }
         }
     },
     computed: {
@@ -33,27 +67,32 @@ export default {
 }
 </script>
 <style>
-    .title {
-        font-weight: normal;    
+    .book-view, .book-container {
+        height: 100%;
     }
     .loader {
-        border: 16px solid #f3f3f3;
-        border-radius: 50%;
-        border-top: 16px solid #3498db;
-        width: 120px;
-        height: 120px;
-        -webkit-animation: spin 2s linear infinite; /* Safari */
-        animation: spin 2s linear infinite;
+        height: calc(100vh - 484px);
     }
-    /* Safari */
-    @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
+    .spinner {
+        top: 30%;
+        transform: translateY(-50%);
     }
-
-    @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    .title {
+        font-size: 2.5em;
+        color: sienna;
+        margin-bottom: 64px;
+    }
+    .card-expansion {
+        height: 480px;
     }
 
+    .md-card {
+        width: 320px;
+        margin: 4px;
+        display: inline-block;
+        vertical-align: top;
+    }
+    .thumbnail {
+        aspect-ratio: 1;
+    }
 </style>

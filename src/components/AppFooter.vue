@@ -19,15 +19,12 @@
 
 <style scoped>
     .footer {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
         padding: 1rem;
         padding-top: 0;
         margin-top: 1rem;
         background-color:#fefefe;
         text-align: center;
+        z-index: 200;
     }
     .container {
         display: flex;
