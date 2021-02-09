@@ -1,6 +1,5 @@
 <template>
     <footer class="footer">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <hr/>
         <div class="container">
             <div class="name">Minh Khôi</div>
