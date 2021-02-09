@@ -21,6 +21,15 @@ const appService = {
         });
     },
 
+    getBooksByCategory(_category) {
+        const query = `volumes?q=books+inauthor:stephen+inauthor:king+subject:${_category}&maxResults=40`;
+        return new Promise((resolve) => {
+            axios.get(query).then(response => {
+                resolve(response)
+            });
+        });
+    },
+
     getBookDetails(id) {
         const url = `volumes/${id}`
         return new Promise((resolve) => {
