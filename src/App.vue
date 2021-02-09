@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import AppHeader from '@/components/AppHeader';
+import AppHeader from './components/AppHeader';
 import AppFooter from './components/AppFooter.vue';
 
 export default {
