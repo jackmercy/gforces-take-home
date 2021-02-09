@@ -8,6 +8,7 @@ import {
     MdCard,
     MdProgress,
     MdChips,
+    MdField
 } from 'vue-material/dist/components'
 
 export default {
@@ -18,5 +19,6 @@ export default {
         Vue.use(MdCard);
         Vue.use(MdProgress);
         Vue.use(MdChips);
+        Vue.use(MdField);
     }
 }

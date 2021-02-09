@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import appService  from '../services/app.service';
 import bookdetailsModule from '@/vuex/bookdetails';
+import * as _ from 'lodash';
 
 Vue.use(Vuex);
 
@@ -39,6 +40,9 @@ const store = new Vuex.Store({
                 })
                 .catch(() => window.alert('Could not get the books'))
             });
+        },
+        sortBookBy(context, payload) {
+            context.commit('startSortBooks', payload);
         }
     },
     mutations: {
@@ -49,6 +53,13 @@ const store = new Vuex.Store({
             state.getBookListStatus = false;
             state.books = data;
         },
+        startSortBooks(state, payload) {
+            state.getBookListStatus = true;
+            const sortedBooks = _.orderBy(state.books, payload.activeKey, payload.direction);
+            state.books = sortedBooks;
+            // simulate http requests
+            setTimeout(() => state.getBookListStatus = false, 1000);
+        }
     }
 });
 

@@ -27,6 +27,11 @@
                                     <span class="pt-16"><strong>Rating count: </strong>{{ bookDetails.volumeInfo.ratingsCount }}</span>
                                     <div class="pt-16"><span><strong>Page count: </strong>{{ bookDetails.volumeInfo.pageCount }}</span></div>
                                 </div>
+                                <div class="btn-preview">
+                                    <md-button @click="goToPreview(bookDetails.volumeInfo.previewLink)" class="md-dense md-raised md-primary">
+                                        Preview
+                                    </md-button>
+                                </div>
                                 <div class="pt-16" v-for="category in bookDetails.volumeInfo.categories" :key="category">
                                     <md-chip>{{ category }}</md-chip>
                                 </div>
@@ -58,6 +63,9 @@ import StarRating from '../components/StarRating';
             ...mapGetters('bookdetailsModule', ['bookDetails', 'isLoading', 'isSuccess'])
         },
         methods: {
+            goToPreview(url) {
+                window.open(url);
+            },
             goToBooks() {
                 this.$router.push({ path: '/books/' });
             },
@@ -112,7 +120,10 @@ $normalText: #212121;
             padding-top: 4px;
             color: #616161;
         }
-        
+        .btn-preview {
+            margin-left: -8px;
+            margin-top: 8px;
+        }
     }
     .description {
         padding: 16px;
