@@ -2,7 +2,7 @@
     <footer class="footer">
         <hr/>
         <div class="container">
-            <div class="name">Minh Khôi</div>
+            <div class="name">{{ dev }}</div>
             <div class="social">
                 <a class="linkedin" href="https://www.linkedin.com/in/khoi-cao-minh-687098200/" target="_blank"><i class="fa fa-linkedin"></i></a>
             </div>
@@ -12,7 +12,10 @@
 
 <script>
     export default {
-        name: 'AppFooter'
+        name: 'AppFooter',
+        data: () => ({
+            dev: 'Minh Khôi'
+        })
     }
 </script>
 
